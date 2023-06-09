@@ -1,4 +1,4 @@
-namespace ECommerce.Models
+namespace ECommerce.Data.Entities
 {
     public class Category
     {
