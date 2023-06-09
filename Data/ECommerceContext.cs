@@ -49,7 +49,7 @@ namespace ECommerce.Database
 					  Price = 29,
 					  Quantity = 1,
 					  Category = "Diagnostic Equipment",
-					  ImageURL = "wwwroot/Images/pulse_oximeter.jpg"
+					  ImageURL = "/wwwroot/Images/pulse_oximeter.jpg"
 
 				  }
 				 );

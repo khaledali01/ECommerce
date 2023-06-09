@@ -63,11 +63,16 @@
               "browserTarget": "Client:build:production"
             },
             "development": {
-              "browserTarget": "Client:build:development", 
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "Client:build:development"        
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "ssl": true,
+            "sslKey": "server.key",
+            "sslCert": "server.crt",
+            "proxyConfig": "proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
