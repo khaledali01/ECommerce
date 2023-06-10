@@ -7,6 +7,9 @@ import { ProductListingComponent } from './product-listing/product-listing.compo
 import { ProductPageComponent } from './product-listing/product-page/product-page.component';
 import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material/button"
+import {MatCardModule} from '@angular/material/card';
 
 const routes: Routes = [
   { path: "products", component: ProductListingComponent }
@@ -21,7 +24,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule, 
+    MatCardModule, 
+    MatButtonModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

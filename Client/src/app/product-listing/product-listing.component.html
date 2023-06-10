@@ -1,7 +1,21 @@
-<h1>ECommerce</h1>
-
-<h1 *ngFor="let product of products">
-    {{product.name}} 
-    {{product.category}}
-    {{product.price}}
-</h1>
+<div *ngFor="let product of products">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{product.name}}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      alt={{product.name}}
+    />
+    <mat-card-content>
+      <p>
+        {{product.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
