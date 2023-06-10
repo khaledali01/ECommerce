@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { IProduct } from '../models/IProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get("/api/products").subscribe((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error)
-    });
+    return this.http.get<IProduct[]>("/api/products");
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { IProduct } from '../models/IProduct';
 
 
 @Component({
@@ -9,11 +10,18 @@ import { ApiService } from '../services/api.service';
 })
 export class ProductListingComponent implements OnInit {
 
+  products: IProduct[] = [];
+
   constructor(private api: ApiService) { }
   ngOnInit(): void {
     this.getProducts();
   }
   getProducts() {
-    return this.api.getProducts();
+    this.api.getProducts().subscribe((response: IProduct[]) => {
+      this.products = response
+      console.log(this.products);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
