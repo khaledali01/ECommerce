@@ -2,15 +2,12 @@
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
-    <img
-      mat-card-image
-      alt={{product.name}}
-    />
+    <img mat-card-image src="{{ product.imageURL }}" alt="{{ product.name }}" />
     <mat-card-content>
       <p>
-        {{product.description}}
+        {{ product.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>

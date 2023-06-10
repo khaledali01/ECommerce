@@ -3,5 +3,10 @@
     "target": "https://localhost:7080",
     "secure": false,
     "logLevel": "debug"
+  }, 
+  "/images": {
+    "target": "https://localhost:7080",
+    "secure": false,
+    "logLevel": "debug"
   }
 }

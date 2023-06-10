@@ -4,6 +4,7 @@ using ECommerce.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20230610170904_ProductRecordEdit")]
+    partial class ProductRecordEdit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,7 +146,7 @@ namespace ECommerce.Migrations
                             ProductID = 1,
                             Category = "Diagnostic Equipment",
                             Description = "Accurately measures your oxygen saturation levels and pulse rate.",
-                            ImageURL = "/images/pulse-oximeter.jpg",
+                            ImageURL = "Images/pulse_oximeter.jpg",
                             Name = "Pulse Oximeter",
                             Price = 29m,
                             Quantity = 1
