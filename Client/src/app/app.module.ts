@@ -8,8 +8,6 @@ import { ProductPageComponent } from './product-listing/product-page/product-pag
 import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button"
-import {MatCardModule} from '@angular/material/card';
 
 const routes: Routes = [
   { path: "products", component: ProductListingComponent }
@@ -26,8 +24,6 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule, 
-    MatCardModule, 
-    MatButtonModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
