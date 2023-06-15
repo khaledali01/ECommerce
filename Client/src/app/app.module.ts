@@ -8,16 +8,21 @@ import { ProductPageComponent } from './product-listing/product-page/product-pag
 import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
-  { path: "products", component: ProductListingComponent }
+  { path: "products", component: ProductListingComponent }, 
+  { path: "products/:id", component: ProductPageComponent }, 
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListingComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

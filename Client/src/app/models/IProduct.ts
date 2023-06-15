@@ -4,6 +4,7 @@ export interface IProduct {
   description: string;
   price: number;
   quantity: number;
-  category: string;
+  color: string;
+  brand: string;
   imageURL: string;
 }
