@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProductListingComponent } from './product-listing/product-listing.component';
@@ -9,14 +9,14 @@ import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import {MatCardModule} from '@angular/material/card'
-import {MatGridListModule} from '@angular/material/grid-list'
-
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
-  { path: "", component: ProductListingComponent }, 
-  { path: ":id", component: ProductPageComponent }, 
+  { path: '', component: ProductListingComponent },
+  { path: ':id', component: ProductPageComponent },
 ];
 
 @NgModule({
@@ -25,17 +25,18 @@ const routes: Routes = [
     ProductListingComponent,
     ProductPageComponent,
     HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule, 
-    MatCardModule, 
-    MatGridListModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [ApiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
