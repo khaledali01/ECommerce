@@ -10,10 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatCardModule} from '@angular/material/card'
+import {MatGridListModule} from '@angular/material/grid-list'
+
 
 const routes: Routes = [
-  { path: "products", component: ProductListingComponent }, 
-  { path: "products/:id", component: ProductPageComponent }, 
+  { path: "", component: ProductListingComponent }, 
+  { path: ":id", component: ProductPageComponent }, 
 ];
 
 @NgModule({
@@ -29,6 +32,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule, 
+    MatCardModule, 
+    MatGridListModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

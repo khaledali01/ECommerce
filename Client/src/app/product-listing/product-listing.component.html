@@ -1,16 +1,26 @@
-<div class="container">
-  <div *ngFor="let product of products">
-    <a routerLink="/products/{{ product.productID }}"
-      ><img src="{{ product.imageURL }}"
-    /></a>
-    <h4>{{ product.name }}</h4>
-    <div>
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-    </div>
-    <p>{{ product.price }}</p>
-  </div>
-</div>
+<mat-grid-list cols="3">
+  <mat-grid-tile *ngFor="let product of products">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ product.imageURL }}"
+        alt="{{ product.name }}"
+        class="image"
+      />
+      <mat-card-content>
+        <p>
+          {{ product.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
