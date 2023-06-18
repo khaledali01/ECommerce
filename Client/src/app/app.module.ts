@@ -9,8 +9,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 const routes: Routes = [
+  { path: 'register', component: SignupPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: ':id', component: ProductPageComponent },
   { path: '', component: ProductListingComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
     ProductPageComponent,
     HeaderComponent,
     LoginPageComponent,
+    SignupPageComponent,
   ],
   imports: [
     BrowserModule,
