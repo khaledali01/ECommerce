@@ -8,6 +8,9 @@ import { Product } from '../models/Product';
   styleUrls: ['./product-listing.component.css'],
 })
 export class ProductListingComponent implements OnInit {
+NavigateToDetailes(arg0: any) {
+throw new Error('Method not implemented.');
+}
   products: Product[] = [];
 
   constructor(private api: ApiService) {}

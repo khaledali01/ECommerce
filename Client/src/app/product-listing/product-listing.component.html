@@ -1,26 +1,25 @@
-<mat-grid-list cols="4">
-  <mat-grid-tile *ngFor="let product of products">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ product.name }}</mat-card-title>
-        <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="{{ product.imageURL }}"
-        alt="{{ product.name }}"
-        class="image"
-      />
-      <mat-card-content>
-        <p>
-          {{ product.price | currency }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Quantity</button>
-        <button mat-button>Add to Cart</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="product-list">
+  <div *ngFor="let product of products">
+    <div>
+      <div class="el-wrapper">
+        <div class="box-up">
+          <span>{{ product.name }}</span>
+          <img class="img" src="{{ product.imageURL }}" alt="" />
+        </div>
+
+        <div class="box-down">
+          <div class="h-bg">
+            <div class="h-bg-inner"></div>
+          </div>
+
+          <a class="cart">
+            <span class="price">${{ product.price }}</span>
+            <span class="add-to-cart">
+              <span class="txt">Add in cart</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

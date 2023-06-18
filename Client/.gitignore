@@ -49,3 +49,5 @@ dist/
 server.crt
 server.key
 
+Client/src/styles.css
+
