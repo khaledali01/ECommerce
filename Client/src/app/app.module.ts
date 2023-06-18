@@ -9,15 +9,11 @@ import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+
 
 const routes: Routes = [
   { path: '', component: ProductListingComponent },
   { path: ':id', component: ProductPageComponent },
-  { path: 'login', component: LoginPageComponent },
 ];
 
 @NgModule({
@@ -32,10 +28,6 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatCardModule,
-    MatGridListModule,
-    MatToolbarModule,
-    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
