@@ -1,7 +1,6 @@
 ﻿using ECommerce.Data.Entities;
-using ECommerce.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using ECommerce.Data.Repository;
 
 namespace ECommerce.Controllers
 {
@@ -10,30 +9,31 @@ namespace ECommerce.Controllers
 
 	public class ProductsController : ControllerBase
 	{
-		private readonly ECommerceContext _context;
+        private readonly IGenericRepository<Product> _gRepository;
 
-		public ProductsController(ECommerceContext context)
+        public ProductsController(IGenericRepository<Product> gRepository)
 		{
-			this._context = context;
-		}
+            _gRepository = gRepository;
+        }
 
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+		public async Task<IActionResult> GetProducts()
 		{
-			return await _context.Products.ToListAsync();
+			var res = await _gRepository.GetAll();
+			return Ok(res);
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Product>> GetProduct(int id)
+		public async Task<IActionResult> GetProduct(int id)
 		{
-			var product = await _context.Products.FindAsync(id);
+			var product = await _gRepository.GetById(id);
 
 			if (product == null)
 			{
 				return NotFound();
 			}
 
-			return product;
+			return Ok(product);
 		}
 	}
 }

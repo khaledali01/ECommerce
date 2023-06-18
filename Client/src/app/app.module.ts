@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 const routes: Routes = [
   { path: '', component: ProductListingComponent },
   { path: ':id', component: ProductPageComponent },
+  { path: 'login', component: LoginPageComponent },
 ];
 
 @NgModule({
@@ -36,7 +37,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
   ],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
