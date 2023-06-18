@@ -9,6 +9,7 @@ import { ApiService } from './services/api.service';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     ProductListingComponent,
     ProductPageComponent,
     HeaderComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

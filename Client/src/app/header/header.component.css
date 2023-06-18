@@ -1,26 +1,228 @@
-mat-toolbar {
+.navbar{
+  background-color: #282632;
+  box-shadow: 10px 5px 5px rgb(54, 54, 54);
+  z-index: 11141;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  
+}
+
+.FilterItems{
+  position: fixed;
+  margin-left: 490px;
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 10px;
+  width: 15.4vw;
+  max-height: 500px;
+  
+  overflow: auto;
+  
+  z-index: 11141; 
+}
+
+.itemDiv{
+  height: 70px;
+  border-bottom:1px solid #b9b9b9 ;
   display: flex;
-  justify-content: flex-start;
+  -webkit-transition: color 0.4s;
 }
 
-.left {
-  margin: 15px;
+.itemDiv a {
+  color: #333;
+  text-decoration: none;
+  font-size: 19px;
+  display: flex;
+  width: 100%;
+  -webkit-transition: color 0.4s;
 }
 
-.right {
-  position: absolute;
-  right: 150px;
+.itemDiv  a:hover{
+  background-color: #282632c7;
+  color: #fff;
+  -webkit-transition: color 0.4s;
 }
 
-.my-app {
-    position: absolute;
-    left: 100px;
+
+
+.itemDiv img {
+  max-height: 60px;
+  margin-top: 5px;
 }
 
-.login {
-  margin: 50px
+.productsbutton{
+  
+  color:#fff;
+  width: 240px;
+  
+  margin: 0px 0px 0px 60px;
+ 
+  padding-bottom: 25px;
+ 
+  font-size: 25px;
+}
+.Mainbuttons a{
+ 
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: color 0.4s;
+}
+.Search{
+  width: 15vw;
+     margin-left: 60px;
+      height: 38px;
+      
+     border-radius: 10px;
+      font-size: 20px;
+
+}
+.srcbtn{
+  height: 44px;
+  width: 65px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 21px;
+
 }
 
-.Signup {
-  margin: 50px
+
+
+
+
+
+.productsbutton a > span{
+  position: relative;
+  padding-right: 6px;
+  top: 3.5px;
+}
+
+.productsbutton a:hover{
+  
+  border-bottom: 4px solid rgb(70, 120, 255);
+  border-radius: 2px;
+  
+  color: rgb(53, 91, 196);
+  
+  
+}
+.Mainbuttons{
+  
+  margin: 18px 0px 0px 0px ;
+  
+}
+
+
+.rightbutton
+{
+  color: #fff;
+  padding: 1px 0px 10px 5px;
+  margin: 5px 20px 0px 30px;
+  z-index: 0;   
+  font-size: 24px;
+  float: right;
+ 
+  
+  
+  
+}
+.rightbutton > a :hover
+{
+  
+  border-bottom: 4px solid rgb(70, 120, 255);
+  border-radius: 2px;
+  color: rgb(53, 91, 196);
+  
+  
+}
+
+.rightbutton .material-symbols-outlined{font-size: 33px;}
+
+
+.accountmenu{
+  position: fixed;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1px solid #b7bcc3;
+  z-index: 99;
+  top: 90px;
+  width: 150px;
+  right: 69px;
+}
+
+.accountmenu img 
+{
+  display: block;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.accountmenu p{
+text-align: center;
+font-weight: 600;
+font-size: 20px;
+}
+
+
+
+/* CSS */
+.button-81 {
+  margin-top: 16px;
+ height: 30px;
+width: 140px;
+background-color: #fff;
+border: 1.5px solid #e2e8f0;
+border-radius: 1.5rem;
+margin-left: 4px;
+color: #0d172a;
+cursor: pointer;
+
+
+
+font-weight: 600;
+line-height: 1;
+
+
+transition: all .1s cubic-bezier(.4, 0, .2, 1);
+box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+
+
+
+}
+
+.button-81:hover {
+background-color: #1e293b;
+color: #fff;
+}
+
+@media (min-width: 768px) {
+.button-81 {
+  font-size: 0.9rem;
+  
+}
+}
+
+@media (max-width: 1230px) {
+  .Search{display: none;}
+  .srcbtn{display: none;}
+  .FilterItems{display: none;}
+}
+
+@media (max-width: 650px) {
+      .rightbutton{
+          display: none;
+      }
+      .productsbutton{
+          margin: 0px 0px 0px 20px;
+      }
+}
+
+@media(max-width:500px){
+  .productsbutton{
+      font-size: 6vw;
+  }
+
 }
