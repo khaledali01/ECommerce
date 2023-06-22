@@ -24,7 +24,7 @@ export class SignupPageComponent {
     let registerDto = new RegisterDTO();
     registerDto.FirstName = firstname;
     registerDto.LastName = lastname;
-    registerDto.Username = username;
+    registerDto.UserName = username;
     registerDto.Email = email;
     registerDto.Password = password;
 
@@ -33,7 +33,7 @@ export class SignupPageComponent {
       if (
         registerDto.FirstName != '' &&
         registerDto.LastName != '' &&
-        registerDto.Username != '' &&
+        registerDto.UserName != '' &&
         registerDto.Email != '' &&
         registerDto.Password != '' &&
         confirmedPassword == registerDto.Password

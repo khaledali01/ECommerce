@@ -3,12 +3,16 @@ import { RegisterDTO } from '../models/DTO/RegisterDTO';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   Register(registerDto: RegisterDTO) {
-    this.http.post("user/register", registerDto);
+    this.http.post<RegisterDTO>('api/user/register', registerDto).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => console.log(err)
+    );
   }
 }

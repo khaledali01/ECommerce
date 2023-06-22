@@ -1,34 +1,30 @@
 using ECommerce.Data.Entities;
+using ECommerce.Data.UserModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Data
 {
-    public class ECommerceContext : DbContext
+    public class ECommerceContext : IdentityDbContext<ApplicationUser>
     {
-        public ECommerceContext()
-        {
-        }
+		public ECommerceContext()
+		{
+		}
 
-        public IConfiguration _configuration { get; }
+		public IConfiguration _configuration { get; }
         public ECommerceContext(IConfiguration configuration)
         {
             this._configuration = configuration;
         }
 
+		
 
+		public DbSet<Product> Products { get; set; }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Product> Products { get; set; }
+		public DbSet<ApplicationUser> AspNetUsers { get; set; }
 
-        public DbSet<Review> Reviews { get; set; }
-
-        public DbSet<Payment> Payments { get; set; }
-
-        public DbSet<Order> Orders { get; set; }
-
-        public DbSet<Category> Categories { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configure the database connection string
 
@@ -39,7 +35,11 @@ namespace ECommerce.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
+
+            
+
+
+			modelBuilder.Entity<Product>()
                 .HasData(
                   new Product()
                   {
@@ -63,7 +63,7 @@ namespace ECommerce.Data
                       Brand = "Bubble Hugs",
                       ImageURL = "/images/Bubble Hugs Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 3,
                       Name = "HEYTEE Mug",
@@ -74,7 +74,7 @@ namespace ECommerce.Data
                       Brand = "HEYTEE",
                       ImageURL = "/images/HEYTEE Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 4,
                       Name = "LiqCool Mug",
@@ -85,7 +85,7 @@ namespace ECommerce.Data
                       Brand = "LiqCool",
                       ImageURL = "/images/LiqCool Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 5,
                       Name = "Sodilly Mug",
@@ -96,7 +96,7 @@ namespace ECommerce.Data
                       Brand = "Sodilly",
                       ImageURL = "/images/Sodilly Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 6,
                       Name = "Onebttl Mug",
@@ -107,7 +107,7 @@ namespace ECommerce.Data
                       Brand = "Onebttl",
                       ImageURL = "/images/Onebttl Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 7,
                       Name = "ECKOI Mug",
@@ -118,7 +118,7 @@ namespace ECommerce.Data
                       Brand = "ECKOI",
                       ImageURL = "/images/ECKOI Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 8,
                       Name = "3dRose Mug",
@@ -129,7 +129,7 @@ namespace ECommerce.Data
                       Brand = "3dRose",
                       ImageURL = "/images/3dRose Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 9,
                       Name = "KrysDesigns Mug",
@@ -140,7 +140,7 @@ namespace ECommerce.Data
                       Brand = "KrysDesigns",
                       ImageURL = "/images/KrysDesigns Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 10,
                       Name = "Vsitoo Mug",
@@ -151,7 +151,7 @@ namespace ECommerce.Data
                       Brand = "Vsitoo",
                       ImageURL = "/images/Vsitoo Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 11,
                       Name = "Paladone Mug",
@@ -162,7 +162,7 @@ namespace ECommerce.Data
                       Brand = "Paladone",
                       ImageURL = "/images/Paladone Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 12,
                       Name = "Nofinis Mug",
@@ -173,7 +173,7 @@ namespace ECommerce.Data
                       Brand = "Nofinis",
                       ImageURL = "/images/Nofinis Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 13,
                       Name = "YHRJWN Mug",
@@ -184,7 +184,7 @@ namespace ECommerce.Data
                       Brand = "YHRJWN",
                       ImageURL = "/images/YHRJWN Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 14,
                       Name = "MUGNIV Mug",
@@ -195,7 +195,7 @@ namespace ECommerce.Data
                       Brand = "MUGNIV",
                       ImageURL = "/images/MUGNIV Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 15,
                       Name = "HOOMUU Mug",
@@ -206,7 +206,7 @@ namespace ECommerce.Data
                       Brand = "HOOMUU",
                       ImageURL = "/images/HOOMUU Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 16,
                       Name = "Ember Mug",
@@ -217,7 +217,7 @@ namespace ECommerce.Data
                       Brand = "Ember",
                       ImageURL = "/images/Ember Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 17,
                       Name = "Wampumtuk Mug",
@@ -228,7 +228,7 @@ namespace ECommerce.Data
                       Brand = "Wampumtuk",
                       ImageURL = "/images/Wampumtuk Mug.jpg"
 
-                  } , new Product()
+                  }, new Product()
                   {
                       ProductID = 18,
                       Name = "KTOTKMOTA Mug",
@@ -242,7 +242,31 @@ namespace ECommerce.Data
                   }
                  );
 
-        }
+			base.OnModelCreating(modelBuilder);
+			modelBuilder.Ignore<IdentityRole>();
+			modelBuilder.Ignore<IdentityUserToken<string>>();
+			modelBuilder.Ignore<IdentityUserRole<string>>();
+			modelBuilder.Ignore<IdentityUserLogin<string>>();
+			modelBuilder.Ignore<IdentityUserClaim<string>>();
+			modelBuilder.Ignore<IdentityRoleClaim<string>>();
+            modelBuilder.Entity<ApplicationUser>();
+
+			modelBuilder.Entity<ApplicationUser>()
+				.Ignore(c => c.AccessFailedCount)
+				.Ignore(c => c.LockoutEnabled)
+				.Ignore(c => c.TwoFactorEnabled)
+				.Ignore(c => c.ConcurrencyStamp)
+				.Ignore(c => c.LockoutEnd)
+				.Ignore(c => c.EmailConfirmed)
+				.Ignore(c => c.TwoFactorEnabled)
+				.Ignore(c => c.LockoutEnd)
+				.Ignore(c => c.AccessFailedCount)
+				.Ignore(c => c.PhoneNumberConfirmed);
+
+
+
+
+		}
 
     }
 }

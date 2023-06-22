@@ -2,40 +2,55 @@
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace ECommerce.Migrations
 {
-    /// <inheritdoc />
-    public partial class Seeding18Products : Migration
+    public partial class Initial : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Category",
-                table: "Products",
-                newName: "Color");
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
 
-            migrationBuilder.AddColumn<string>(
-                name: "Brand",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 1,
-                columns: new[] { "Brand", "Color", "Description", "ImageURL", "Name", "Price" },
-                values: new object[] { "Funny Mugs, LOL", "Black", "Legendary Coffee Mug Level 110 - Large Ceramic Black Coffee Mug 15oz - Gaming, Gamer Cup.", "/images/MMO Mug.jpg", "MMO Mug", 31m });
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ProductID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ProductID);
+                });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductID", "Brand", "Color", "Description", "ImageURL", "Name", "Price", "Quantity" },
                 values: new object[,]
                 {
+                    { 1, "Funny Mugs, LOL", "Black", "Legendary Coffee Mug Level 110 - Large Ceramic Black Coffee Mug 15oz - Gaming, Gamer Cup.", "/images/MMO Mug.jpg", "MMO Mug", 31m, 1 },
                     { 2, "Bubble Hugs", "Black", "Gaming Progress - Video Game Funny Humor Sarcasm Saying 15oz Black.", "/images/Bubble Hugs Mug.jpg", "Bubble Hugs Mug", 22m, 1 },
                     { 3, "HEYTEE", "White", "LHEYTEE Funny Coffee Mugs for Dad Coffee Mug, 11oz Ceramic Dad Coffee Cup_009.", "/images/HEYTEE Mug.jpg", "HEYTEE Mug", 27m, 1 },
                     { 4, "LiqCool", "Purple", "Sometimes You Forget Youre Awesome Coffee Mug, Thank You Gifts, Gifts for Coworkers, Birthday Christmas Appreciation Gift for Employee Women Men (12 oz, Purple).", "/images/LiqCool Mug.jpg", "LiqCool Mug", 35m, 1 },
@@ -54,111 +69,27 @@ namespace ECommerce.Migrations
                     { 17, "Wampumtuk", "White", "Addicted to Pot 11 Ounces Funny Coffee Mug.", "/images/Wampumtuk Mug.jpg", "Wampumtuk Mug", 46m, 1 },
                     { 18, "KTOTKMOTA", "Dark Grey", "Nordic Viking Rune Mug Tankard Stainless Steel Wooden Resin 3D Norse Decor Coffee Cool Gothic Beer Tankard Stein Cup Mugs 20oz.", "/images/KTOTKMOTA Mug.jpg", "KTOTKMOTA Mug", 56m, 1 }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 2);
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 6);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 7);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 8);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 9);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 10);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 11);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 12);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 13);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 14);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 15);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 16);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 17);
-
-            migrationBuilder.DeleteData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 18);
-
-            migrationBuilder.DropColumn(
-                name: "Brand",
-                table: "Products");
-
-            migrationBuilder.RenameColumn(
-                name: "Color",
-                table: "Products",
-                newName: "Category");
-
-            migrationBuilder.UpdateData(
-                table: "Products",
-                keyColumn: "ProductID",
-                keyValue: 1,
-                columns: new[] { "Category", "Description", "ImageURL", "Name", "Price" },
-                values: new object[] { "Diagnostic Equipment", "Accurately measures your oxygen saturation levels and pulse rate.", "/images/pulse-oximeter.jpg", "Pulse Oximeter", 29m });
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }
