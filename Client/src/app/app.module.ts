@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { ApiService } from './services/api.service';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'register', component: SignupPageComponent },
@@ -34,7 +36,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
