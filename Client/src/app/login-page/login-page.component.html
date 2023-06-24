@@ -2,9 +2,9 @@
   <div class="login">
     <h1>Login</h1>
 
-    <input #username placeholder="Username" />
-    <input #password placeholder="Password" />
-    <button>Login</button>
+    <input placeholder="Username" #UserName />
+    <input placeholder="Password" #Password />
+    <button (click)="Login(UserName.value, Password.value)">Login</button>
     <br />
     <button class="signupbtn" routerLink="/register">Sign Up</button>
     <br />
