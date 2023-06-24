@@ -4,7 +4,7 @@
       <div class="el-wrapper">
         <div class="box-up">
           <span>{{ product.name }}</span>
-          <img class="img" src="{{ product.imageURL }}" alt="" />
+          <img class="img" src="{{ product.imageURL }}" (click)="NavigateToProductPage(product.productID)"/>
         </div>
 
         <div class="box-down">

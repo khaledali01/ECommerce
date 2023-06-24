@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<Product[]>("/api/products");
+    return this.http.get<Product[]>('/api/products');
   }
 
+  getProduct(id: number) {
+    return this.http.get('api/products/' + id);
+  }
 }

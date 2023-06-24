@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Product } from '../models/Product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-listing',
@@ -8,12 +9,9 @@ import { Product } from '../models/Product';
   styleUrls: ['./product-listing.component.css'],
 })
 export class ProductListingComponent implements OnInit {
-NavigateToDetailes(arg0: any) {
-throw new Error('Method not implemented.');
-}
   products: Product[] = [];
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private route: Router) {}
   ngOnInit(): void {
     this.getProducts();
   }
@@ -27,5 +25,9 @@ throw new Error('Method not implemented.');
         console.log(error);
       }
     );
+  }
+
+  NavigateToProductPage(id: number) {
+    this.route.navigate([id]);
   }
 }
