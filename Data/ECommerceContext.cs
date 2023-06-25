@@ -20,9 +20,13 @@ namespace ECommerce.Data
 
 		
 
-		public DbSet<Product> Products { get; set; }
-
 		public DbSet<ApplicationUser> AspNetUsers { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Cart> Carts {get; set;}
+
+        public DbSet<CartProduct> CartProducts {get; set;}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -249,7 +253,7 @@ namespace ECommerce.Data
 			modelBuilder.Ignore<IdentityUserLogin<string>>();
 			modelBuilder.Ignore<IdentityUserClaim<string>>();
 			modelBuilder.Ignore<IdentityRoleClaim<string>>();
-            modelBuilder.Entity<ApplicationUser>();
+
 
 			modelBuilder.Entity<ApplicationUser>()
 				.Ignore(c => c.AccessFailedCount)

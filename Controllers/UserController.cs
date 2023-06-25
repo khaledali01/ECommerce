@@ -1,3 +1,5 @@
+using ECommerce.Data.Entities;
+using ECommerce.Data.Repository;
 using ECommerce.Data.UserModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +11,11 @@ namespace ECommerce.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public UserController(UserManager<ApplicationUser> userManager)
+        private readonly IGenericRepository<Cart> _cartsRepo;
+        public UserController(UserManager<ApplicationUser> userManager, IGenericRepository<Cart> cartsRepo)
         {
-            this._userManager = userManager;
+            _cartsRepo = cartsRepo;
+            _userManager = userManager;
         }
 
         [HttpPost("register")]
@@ -26,7 +30,10 @@ namespace ECommerce.Controllers
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
 
-
+            if (result.Succeeded) {
+                Cart cart = new() {UserId = registerModel.UserName};
+                await _cartsRepo.Insert(cart);
+            }
 
             return Ok(result);
 

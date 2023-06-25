@@ -13,6 +13,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 
+
 const routes: Routes = [
   { path: 'register', component: SignupPageComponent },
   { path: 'login', component: LoginPageComponent },
