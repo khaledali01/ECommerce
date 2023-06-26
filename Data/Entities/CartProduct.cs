@@ -22,7 +22,7 @@ namespace ECommerce.Data.Entities
 
         public string Brand { get; set; }
 
-        public Cart? Cart { get; set; }
+        public Cart Cart { get; set; }
 
         public bool IsOrdered { get; set; }
         

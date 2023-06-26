@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Product } from '../models/Product';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-listing',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class ProductListingComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private api: ApiService, private route: Router) {}
+  constructor(
+    private api: ApiService,
+    private route: Router,
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
     this.getProducts();
   }
@@ -29,5 +34,9 @@ export class ProductListingComponent implements OnInit {
 
   NavigateToProductPage(id: number) {
     this.route.navigate([id]);
+  }
+
+  AddToCart(product: Product) {
+    this.cartService.postCartProduct(product);
   }
 }

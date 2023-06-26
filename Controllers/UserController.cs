@@ -1,6 +1,7 @@
 using ECommerce.Data.Entities;
 using ECommerce.Data.Repository;
 using ECommerce.Data.UserModels;
+using ECommerce.Services.JWT;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,20 @@ namespace ECommerce.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IGenericRepository<Cart> _cartsRepo;
-        public UserController(UserManager<ApplicationUser> userManager, IGenericRepository<Cart> cartsRepo)
+
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        private readonly IJWTTokenService _tokenService;
+        public UserController(UserManager<ApplicationUser> userManager,
+             IGenericRepository<Cart> cartsRepo,
+             SignInManager<ApplicationUser> signInManager, 
+             IJWTTokenService tokenService
+             )
         {
             _cartsRepo = cartsRepo;
             _userManager = userManager;
+            _signInManager = signInManager;
+            _tokenService = tokenService;
         }
 
         [HttpPost("register")]
@@ -30,8 +41,9 @@ namespace ECommerce.Controllers
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
 
-            if (result.Succeeded) {
-                Cart cart = new() {UserId = registerModel.UserName};
+            if (result.Succeeded)
+            {
+                Cart cart = new() { UserId = registerModel.UserName };
                 await _cartsRepo.Insert(cart);
             }
 
@@ -52,15 +64,26 @@ namespace ECommerce.Controllers
                 return BadRequest();
             }
 
-            var checkPassword = await _userManager.CheckPasswordAsync(userExists, loginModel.Password);
+            var checkPassword = await _signInManager.CheckPasswordSignInAsync(userExists, loginModel.Password, false);
 
-            if(checkPassword) {
-                return Ok(checkPassword);
-            } else {
+            if (checkPassword.Succeeded)
+            {
+                return Ok(new
+                {
+                    result = checkPassword, 
+                    username = userExists.UserName, 
+                    email = userExists.Email, 
+                    userid = userExists.Id, 
+                    token = _tokenService.GenerateToken(userExists), 
+                    isadmin = userExists.IsAdmin,
+                });
+            }
+            else
+            {
                 return BadRequest();
             }
 
-            
+
         }
     }
 }

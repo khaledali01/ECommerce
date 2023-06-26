@@ -5,8 +5,8 @@ namespace ECommerce.Data.DTO
 {
     public class CartDTO
     {
-        public string UserId { get; set; }
-        public Product Product { get; set; }
+        public string Id { get; set; }
+        public Product[] Products { get; set; }
 
     }
 }

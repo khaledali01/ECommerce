@@ -14,8 +14,8 @@
 
           <a class="cart">
             <span class="price">${{ product.price }}</span>
-            <span class="add-to-cart">
-              <span class="txt">Add in cart</span>
+            <span (click)="AddToCart(product)" class="add-to-cart">
+              <span class="txt">Add To cart</span>
             </span>
           </a>
         </div>

@@ -1,10 +1,12 @@
+
+using System.ComponentModel.DataAnnotations;
+
 namespace ECommerce.Data.Entities
 {
     public class Cart
     {
-        public int Id { get; set; }
+        [Key]
         public string UserId { get; set; }
-        public List<CartProduct> Products { get; set; }
-
+        public List<CartProduct>? Products { get; set; }
     }
 }

@@ -12,6 +12,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
+import { CartService } from './services/cart.service';
+import { EventService } from './services/event.service';
 
 
 const routes: Routes = [
@@ -37,7 +39,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
   ],
   exports: [RouterModule],
-  providers: [ApiService, AuthService],
+  providers: [ApiService, AuthService, CartService, EventService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
